@@ -20,6 +20,7 @@
     <h2>Survey Questions</h2>
     <hr>
 
+    <form method="POST" role="form">
     <h3><strong>About You</strong></h3>
     <h4>Name (Required)</h4>
     <input type="text" id="name" class="form-control" required>
@@ -30,10 +31,9 @@
     <hr>
     <h3><strong>Rate the following statments from 1 (Strongly Disagree) to 5 (Strongly Agree)</strong></h3>
 
-
-    <h4>You prefer coffee over tea</h4>
-    <select class="form-control" style="width: 200px;" id="q1">
-      <option value=""></option>
+    <h4><strong>You prefer coffee over tea</strong></h4>
+    <select class="form-control" style="width: 200px;" id="surveyQ1">
+      <option value="">Choose an option</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -42,8 +42,8 @@
     </select>
 
     <h4>You like dogs more than cats</h4>
-    <select class="form-control" style="width: 200px;" id="q2">
-      <option value=""></option>
+    <select class="form-control" style="width: 200px;" id="surveyQ2">
+      <option value="">Choose an option</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -52,9 +52,9 @@
     </select>
 
 
-    <h4>We have control of our own fate</h4>
-    <select class="form-control" style="width: 200px;" id="q3">
-      <option value=""></option>
+    <h4>You have control of your own fate</h4>
+    <select class="form-control" style="width: 200px;" id="surveyQ3">
+      <option value="">Choose an option</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -64,8 +64,8 @@
 
 
     <h4>Cooking at home is better than going to a restaurant</h4>
-    <select class="form-control" style="width: 200px;" id="q4">
-      <option value=""></option>
+    <select class="form-control" style="width: 200px;" id="surveyQ4">
+      <option value="">Choose an option</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -75,8 +75,8 @@
 
 
     <h4>The 80s were better than the 90s</h4>
-    <select class="form-control" style="width: 200px;" id="q5">
-      <option value=""></option>
+    <select class="form-control" style="width: 200px;" id="surveyQ5">
+      <option value="">Choose an option</option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -84,21 +84,11 @@
       <option value="5">5 (Strongly Agree)</option>
     </select>
 
-
-    <h4>Winter is preferable to summer</h4>
-    <select class="form-control" style="width: 200px;" id="q6">
-      <option value=""></option>
-      <option value="1">1 (Strongly Disagree)</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5 (Strongly Agree)</option>
-    </select>
-        
     <br>
     
     <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
 
+    <form method="POST" role="form">
     <hr>
     <footer class="footer">
       <div class="container">
@@ -120,7 +110,7 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+          <img id="match-img" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -131,34 +121,42 @@
   </div>
 
   <script type="text/javascript">
-    
-
-    
+        
     $("#submit").on("click", function(event) {
       event.preventDefault();
 
-
-      function formAnswers() {
-
-        var userData = {
+        var newFriend = {
           name: $("#name").val(),
           photo: $("#photo").val(),
           scores: [
-            $("#q1").val(),
-            $("#q2").val(),
-            $("#q3").val(),
-            $("#q4").val(),
-            $("#q5").val(),
-            $("#q6").val(),
-            $("#q7").val(),
-            $("#q8").val(),
-            $("#q9").val(),
-            $("#q10").val()
+            $("#surveyQ1").val(),
+            $("#surveyQ2").val(),
+            $("#surveyQ3").val(),
+            $("#surveyQ4").val(),
+            $("#surveyQ5").val()
           ]
         };
 
-      }
-    });
+      // Question: What does this code do??
+      $.post("/api/friends", newFriend)
+        .then(function(data) {
+
+          if (data){
+            console.log("add.html", data);
+
+            $("#match-name").text(data.name);
+            $("#match-img").attr("src", data.photo);
+            $("#results-modal").modal("toggle");
+        } else {
+          console.log ("No response data came back!")
+        }
+
+
+        });
+    
+
+
+
   </script>
 
 </body>
