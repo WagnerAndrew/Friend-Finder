@@ -87,6 +87,61 @@
         <option value="5">5 (Strongly Agree)</option>
       </select>
 
+
+      <h4>The 80s were better than the 90s</h4>
+      <select class="form-control" style="width: 200px;" id="surveyQ6">
+        <option value="">Choose an option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h4>The 80s were better than the 90s</h4>
+      <select class="form-control" style="width: 200px;" id="surveyQ7">
+        <option value="">Choose an option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h4>The 80s were better than the 90s</h4>
+      <select class="form-control" style="width: 200px;" id="surveyQ8">
+        <option value="">Choose an option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h4>The 80s were better than the 90s</h4>
+      <select class="form-control" style="width: 200px;" id="surveyQ9">
+        <option value="">Choose an option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+
+
+      <h4>The 80s were better than the 90s</h4>
+      <select class="form-control" style="width: 200px;" id="surveyQ10">
+        <option value="">Choose an option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+
       <br>
 
       <button type="submit" class="btn btn-secondary btn-lg btn-block" id="submit">Submit</button>
@@ -138,11 +193,16 @@
         name: $("#name").val(),
         photo: $("#photo").val(),
         scores: [
-          $("#surveyQ1").val(),
-          $("#surveyQ2").val(),
-          $("#surveyQ3").val(),
-          $("#surveyQ4").val(),
-          $("#surveyQ5").val()
+          parseInt($("#surveyQ1").val()),
+          parseInt($("#surveyQ2").val()),
+          parseInt($("#surveyQ3").val()),
+          parseInt($("#surveyQ4").val()),
+          parseInt($("#surveyQ5").val()),
+          parseInt($("#surveyQ6").val()),
+          parseInt($("#surveyQ7").val()),
+          parseInt($("#surveyQ8").val()),
+          parseInt($("#surveyQ9").val()),
+          parseInt($("#surveyQ10").val()),
         ]
       };
 
@@ -174,8 +234,6 @@
             $("#surveyQ3").val(""),
             $("#surveyQ4").val(""),
             $("#surveyQ5").val("")
-        
-      
 
       });
 

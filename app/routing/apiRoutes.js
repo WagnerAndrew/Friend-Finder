@@ -41,14 +41,17 @@ module.exports = function(app) {
       console.log("Current friend is: " + JSON.stringify(currentFriend));
       
 
-      if (totalDifference <= newBestFriend.score) {
+      if (parseInt(totalDifference) <= newBestFriend.score) {
+
         newBestFriend.name = currentFriend.name;
         newBestFriend.photo = currentFriend.photo;
         newBestFriend.score = totalDifference;
+        console.log("New best friend in the IF: "+ newBestFriend);
+        
 
       }
     }
-    console.log("Best friend is: " + JSON.stringify(newBestFriend));
+    console.log("newBestFriend for response is: " + JSON.stringify(newBestFriend));
       friendsData.push(req.body);
       res.json(newBestFriend);
       
