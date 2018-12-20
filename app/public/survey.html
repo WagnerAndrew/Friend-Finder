@@ -108,7 +108,7 @@
         <div class="modal-content">
 
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
             <h2 class="modal-title"><strong>Best Match</strong></h2>
           </div>
 
@@ -148,21 +148,22 @@
 
       console.log("Name is " + $("#name").val());
       console.log("question 1 is " + $("#surveyQ1").val(),);
-      console.dir(newFriend);
+      console.log(newFriend);
 
       $.post("/api/friends", newFriend)
       .then(function (data) {
 
         if (data) {
-          console.log("add.html", data);
-          alert("Friend Added!");
+          console.log("Data Response is: " + JSON.stringify(data));
+          
 
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
           $("#results-modal").modal("toggle");
 
         } else {
-          console.log("No response data came back!")
+          console.log("No response data came back!");
+
         }
 
             //Clear form

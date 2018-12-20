@@ -34,7 +34,13 @@ module.exports = function(app) {
         
         totalDifference += Math.abs(currentFriendScore - userFriendScore);
 
+        console.log("Total difference is: " + totalDifference);
+
       }
+
+      console.log("Current friend is: " + JSON.stringify(currentFriend));
+      
+
       if (totalDifference <= newBestFriend.score) {
         newBestFriend.name = currentFriend.name;
         newBestFriend.photo = currentFriend.photo;
@@ -42,7 +48,7 @@ module.exports = function(app) {
 
       }
     }
-
+    console.log("Best friend is: " + JSON.stringify(newBestFriend));
       friendsData.push(req.body);
       res.json(newBestFriend);
       
