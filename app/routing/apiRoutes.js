@@ -2,16 +2,49 @@
 var friendsData = require("../data/friends");
 
 
+
 module.exports = function(app) {
  
-  app.get("/api/friends", function(req, res) {
-   return res.json(friendsData);
+  app.get("/data/friends", function(req, res) {
+   res.json(friendsData);
   });
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
   app.post("/api/friends", function(req, res) {
+    console.log("req.body is: "+ JSON.stringify(req.body));
+
+    var userFriend = req.body;
+    var newBestFriend = { 
+      name: "", 
+      photo: "",
+      score: 1000
+
+    }
+
+    for (i=0; i<friendsData.length; i++){
+
+      var currentFriend = friendsData[i];
+      var totalDifference = 0;
+
+      for (j=0; j<currentFriend.scores.length; j++){
+        var currentFriendScore = currentFriend.scores[j];
+        var userFriendScore = userFriend.scores[j];
+
+        console.log("Current Friend score is: " + currentFriendScore + " userFriendScore is: " + userFriendScore);
+        
+        totalDifference += Math.abs(currentFriendScore - userFriendScore);
+
+      }
+      if (totalDifference <= newBestFriend.score) {
+        newBestFriend.name = currentFriend.name;
+        newBestFriend.photo = currentFriend.photo;
+        newBestFriend.score = totalDifference;
+
+      }
+    }
 
       friendsData.push(req.body);
-      res.JSON(false);
+      res.json(newBestFriend);
       
   });
 ///////////////////////////////////////////////////////////////////////////////////////////////
