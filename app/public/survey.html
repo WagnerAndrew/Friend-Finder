@@ -7,11 +7,13 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>ç  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <style> body {font-family: 'Playfair Display', serif; background: #DECDBE; color: #964F4C;};
+  <style> body {font-family: 'Playfair Display', serif; background: #DECDBE; color: #964F4C};
+          .img-fluid {width: 95%};
+  
   </style>
-
 
 
 </head>
@@ -34,7 +36,7 @@
       <hr>
       <h3><strong>Rate the following statments from 1 (Strongly Disagree) to 5 (Strongly Agree)</strong></h3>
 
-      <h4><strong>You prefer coffee over tea</strong></h4>
+      <h4>You prefer coffee over tea</h4>
       <select class="form-control" style="width: 200px;" id="surveyQ1">
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
@@ -88,7 +90,7 @@
       </select>
 
 
-      <h4>The 80s were better than the 90s</h4>
+      <h4>Aliens exist</h4>
       <select class="form-control" style="width: 200px;" id="surveyQ6">
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
@@ -99,7 +101,7 @@
       </select>
 
 
-      <h4>The 80s were better than the 90s</h4>
+      <h4>East coast rap beats west coast</h4>
       <select class="form-control" style="width: 200px;" id="surveyQ7">
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
@@ -110,7 +112,7 @@
       </select>
 
 
-      <h4>The 80s were better than the 90s</h4>
+      <h4>Chicago style pizza is better than New York style</h4>
       <select class="form-control" style="width: 200px;" id="surveyQ8">
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
@@ -121,7 +123,7 @@
       </select>
 
 
-      <h4>The 80s were better than the 90s</h4>
+      <h4>Flossing will add ten years to your life</h4>
       <select class="form-control" style="width: 200px;" id="surveyQ9">
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
@@ -132,7 +134,7 @@
       </select>
 
 
-      <h4>The 80s were better than the 90s</h4>
+      <h4>Six hours of sleep is enough</h4>
       <select class="form-control" style="width: 200px;" id="surveyQ10">
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
@@ -169,7 +171,7 @@
 
           <div class="modal-body">
             <h2 id="match-name"></h2>
-            <img id="match-img" alt="">
+            <img id="match-img" class="clearfix img-fluid" alt="">
           </div>
 
           <div class="modal-footer">
@@ -233,7 +235,12 @@
             $("#surveyQ2").val(""),
             $("#surveyQ3").val(""),
             $("#surveyQ4").val(""),
-            $("#surveyQ5").val("")
+            $("#surveyQ5").val(""),
+            $("#surveyQ6").val(""),
+            $("#surveyQ7").val(""),
+            $("#surveyQ8").val(""),
+            $("#surveyQ9").val(""),
+            $("#surveyQ10").val("")
 
       });
 
