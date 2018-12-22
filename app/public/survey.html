@@ -25,7 +25,7 @@
     <h2>Survey Questions</h2>
     <hr>
 
-    <form role="form">
+    <form role="form" class="was-validated">
       <h3><strong>About You</strong></h3>
       <h4>Name (Required)</h4>
       <input type="text" id="name" class="form-control" required>
@@ -37,7 +37,7 @@
       <h3><strong>Rate the following statments from 1 (Strongly Disagree) to 5 (Strongly Agree)</strong></h3>
 
       <h4>You prefer coffee over tea</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ1">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ1" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -47,7 +47,8 @@
       </select>
 
       <h4>You like dogs more than cats</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ2">
+      
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ2" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -56,9 +57,8 @@
         <option value="5">5 (Strongly Agree)</option>
       </select>
 
-
       <h4>You have control of your own fate</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ3">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ3" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -69,7 +69,7 @@
 
 
       <h4>Cooking at home is better than going to a restaurant</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ4">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ4" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -80,7 +80,7 @@
 
 
       <h4>The 80s were better than the 90s</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ5">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ5" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -91,7 +91,7 @@
 
 
       <h4>Aliens exist</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ6">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ6" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -102,7 +102,7 @@
 
 
       <h4>East coast rap beats west coast</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ7">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ7" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -113,7 +113,7 @@
 
 
       <h4>Chicago style pizza is better than New York style</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ8">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ8" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -124,7 +124,7 @@
 
 
       <h4>Flossing will add ten years to your life</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ9">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ9" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -135,7 +135,7 @@
 
 
       <h4>Six hours of sleep is enough</h4>
-      <select class="form-control" style="width: 200px;" id="surveyQ10">
+      <select class="form-control custom-select" style="width: 200px;" id="surveyQ10" required>
         <option value="">Choose an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -146,7 +146,7 @@
 
       <br>
 
-      <button type="submit" class="btn btn-secondary btn-lg btn-block" id="submit">Submit</button>
+      <button type="submit" class="btn btn-secondary btn-lg btn-block mt-2" id="submit">Submit</button>
 
     </form>
 
@@ -165,7 +165,6 @@
         <div class="modal-content">
 
           <div class="modal-header">
-            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
             <h2 class="modal-title"><strong>Best Match</strong></h2>
           </div>
 
@@ -188,67 +187,133 @@
 
   <script type="text/javascript">
 
-    $("#submit").on("click", function (event) {
-      event.preventDefault();
-
-      var newFriend = {
-        name: $("#name").val(),
-        photo: $("#photo").val(),
-        scores: [
-          parseInt($("#surveyQ1").val()),
-          parseInt($("#surveyQ2").val()),
-          parseInt($("#surveyQ3").val()),
-          parseInt($("#surveyQ4").val()),
-          parseInt($("#surveyQ5").val()),
-          parseInt($("#surveyQ6").val()),
-          parseInt($("#surveyQ7").val()),
-          parseInt($("#surveyQ8").val()),
-          parseInt($("#surveyQ9").val()),
-          parseInt($("#surveyQ10").val()),
-        ]
-      };
-
-      console.log("Name is " + $("#name").val());
-      console.log("question 1 is " + $("#surveyQ1").val(),);
-      console.log(newFriend);
-
-      $.post("/api/friends", newFriend)
-      .then(function (data) {
-
-        if (data) {
-          console.log("Data Response is: " + JSON.stringify(data));
-          
-
-          $("#match-name").text(data.name);
-          $("#match-img").attr("src", data.photo);
-          $("#results-modal").modal("toggle");
-
-        } else {
-          console.log("No response data came back!");
-
-        }
-
-            //Clear form
-            $("#name").val(""),
-            $("#photo").val(""),
-            $("#surveyQ1").val(""),
-            $("#surveyQ2").val(""),
-            $("#surveyQ3").val(""),
-            $("#surveyQ4").val(""),
-            $("#surveyQ5").val(""),
-            $("#surveyQ6").val(""),
-            $("#surveyQ7").val(""),
-            $("#surveyQ8").val(""),
-            $("#surveyQ9").val(""),
-            $("#surveyQ10").val("")
-
+      $("#submit").on("click", function (event) {
+        event.preventDefault();
+    
+        var newFriend = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          scores: [
+            parseInt($("#surveyQ1").val()),
+            parseInt($("#surveyQ2").val()),
+            parseInt($("#surveyQ3").val()),
+            parseInt($("#surveyQ4").val()),
+            parseInt($("#surveyQ5").val()),
+            parseInt($("#surveyQ6").val()),
+            parseInt($("#surveyQ7").val()),
+            parseInt($("#surveyQ8").val()),
+            parseInt($("#surveyQ9").val()),
+            parseInt($("#surveyQ10").val()),
+          ]
+        };
+    
+        console.log("Name is " + $("#name").val());
+        console.log("question 1 is " + $("#surveyQ1").val(),);
+        console.log(newFriend);
+    
+        $.post("/api/friends", newFriend)
+        .then(function (data) {
+    
+          if (data) {
+            console.log("Data Response is: " + JSON.stringify(data));
+            
+    
+            $("#match-name").text(data.name);
+            $("#match-img").attr("src", data.photo);
+            $("#results-modal").modal("toggle");
+    
+          } else {
+            console.log("No response data came back!");
+    
+          }
+    
+              //Clear form
+              $("#name").val(""),
+              $("#photo").val(""),
+              $("#surveyQ1").val(""),
+              $("#surveyQ2").val(""),
+              $("#surveyQ3").val(""),
+              $("#surveyQ4").val(""),
+              $("#surveyQ5").val(""),
+              $("#surveyQ6").val(""),
+              $("#surveyQ7").val(""),
+              $("#surveyQ8").val(""),
+              $("#surveyQ9").val(""),
+              $("#surveyQ10").val("")
+    
+        });
+    
       });
-
-    });
-
- 
-  </script>
+    
+    
+    </script>
 
 </body>
 
 </html>
+
+
+
+// <!-- 
+// <script type="text/javascript">
+
+//   $("#submit").on("click", function (event) {
+//     event.preventDefault();
+
+//     var newFriend = {
+//       name: $("#name").val(),
+//       photo: $("#photo").val(),
+//       scores: [
+//         parseInt($("#surveyQ1").val()),
+//         parseInt($("#surveyQ2").val()),
+//         parseInt($("#surveyQ3").val()),
+//         parseInt($("#surveyQ4").val()),
+//         parseInt($("#surveyQ5").val()),
+//         parseInt($("#surveyQ6").val()),
+//         parseInt($("#surveyQ7").val()),
+//         parseInt($("#surveyQ8").val()),
+//         parseInt($("#surveyQ9").val()),
+//         parseInt($("#surveyQ10").val()),
+//       ]
+//     };
+
+//     console.log("Name is " + $("#name").val());
+//     console.log("question 1 is " + $("#surveyQ1").val(),);
+//     console.log(newFriend);
+
+//     $.post("/api/friends", newFriend)
+//     .then(function (data) {
+
+//       if (data) {
+//         console.log("Data Response is: " + JSON.stringify(data));
+        
+
+//         $("#match-name").text(data.name);
+//         $("#match-img").attr("src", data.photo);
+//         $("#results-modal").modal("toggle");
+
+//       } else {
+//         console.log("No response data came back!");
+
+//       }
+
+//           //Clear form
+//           $("#name").val(""),
+//           $("#photo").val(""),
+//           $("#surveyQ1").val(""),
+//           $("#surveyQ2").val(""),
+//           $("#surveyQ3").val(""),
+//           $("#surveyQ4").val(""),
+//           $("#surveyQ5").val(""),
+//           $("#surveyQ6").val(""),
+//           $("#surveyQ7").val(""),
+//           $("#surveyQ8").val(""),
+//           $("#surveyQ9").val(""),
+//           $("#surveyQ10").val("")
+
+//     });
+
+//   });
+
+
+// </script> -->
